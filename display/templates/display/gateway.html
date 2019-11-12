@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'display/style.css'%}" type="text/css">
+</head>
+
+
+<body>
+    <div class="row m-0">
+        <div class="col-3 col-md-2 p-0" id="sidenav" style="height:100vh;background-color: #4e73df;">
+            <h5 class=" text-white text-center my-4"> SMART SENSORS </h5>
+            <hr style="background-color: rgba(218, 218, 218, 0.514);width:90%;height: 0.1px;">
+            <div class="list-group ">
+                <a href="{%url 'tag'%}" class="list-group-item list-group-item-action transparent ">Tag</a>
+                <a href="{%url 'customer'%}" class=" list-group-item list-group-item-action transparent ">Customer</a>
+                <a href=" {%url 'webapp'%}" class="list-group-item list-group-item-action transparent ">Web
+                    application</a>
+                <a href="{%url 'service'%}" class="list-group-item list-group-item-action transparent ">Service</a>
+                <a href="#" class="list-group-item list-group-item-action transparent active">Gateway</a>
+
+            </div>
+        </div>
+        <button class="navbar-toggler text-white px-1"
+            style="background-color: #5b80ec;border-radius: 0px;height: 100vh;" id="navbarSideButton"
+            type="button">&#60;</button>
+        <div class="col" style="min-width: 200px;">
+            <h1>
+                Gateway
+                <a type="button" class="btn btn-info "
+                    href="http://{{request.META.HTTP_HOST}}/admin/display/gateway/add/">add</a>
+            </h1>
+            <table class="table table-striped text-center" style="overflow-x: auto;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Gateway ID</th>
+                        <th>Customer ID</th>
+                        <th>Refresh rate</th>
+                        <th>Uid list </th>
+                        <th>System</th>
+                        <th>IMEI_MAC</th>
+                        <th>Firmware</th>
+                        <th>Phone</th>
+                        <th>Max sms</th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for i in   data%}
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <td> {{i.gateway_id}}</td>
+                        <td> {{i.customer_id}}</td>
+                        <td> {{i.refresh_rate}}</td>
+                        <td> {{i.uid_list}}</td>
+                        <td> {{i.system}}</td>
+                        <td> {{i.IMEI_MAC}}</td>
+                        <td> {{i.firmware_upgrade}}</td>
+                        <td> {{i.moblie_number}}</td>
+                        <td> {{i.max_sms}}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a type="button" class="btn btn-primary"
+                                    href="http://{{request.META.HTTP_HOST}}/admin/display/gateway/{{i.gateway_id}}/change/">Edit</a>
+                                <a type="button" class="btn btn-danger"
+                                    href="http://{{request.META.HTTP_HOST}}/admin/display/gateway/{{i.gateway_id}}/delete/">Delete</a>
+
+                            </div>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    {%load static%}
+    <script src="{%static 'display/main.js'%}"></script>
+</body>
+
+</html>

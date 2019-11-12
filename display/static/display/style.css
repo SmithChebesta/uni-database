@@ -1,0 +1,8 @@
+.list-group>a.active {
+    background-color: #3657b8;
+}
+
+.transparent {
+    background-color: transparent;
+    color: white;
+}
