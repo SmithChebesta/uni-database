@@ -1,23 +1,23 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render
 from . import models
 # Create your views here.
 
 
 def tag(req):
-    return render(req, 'display/index.html', {'data': get_list_or_404(models.Tag)})
+    return render(req, 'display/index.html', {'data': models.Tag.objects.values()})
 
 
 def customer(req):
-    return render(req, 'display/customer.html', {'data': get_list_or_404(models.Customer)})
+    return render(req, 'display/customer.html', {'data': models.Customer.objects.values()})
 
 
 def webapp(req):
-    return render(req, 'display/webapp.html', {'data': get_list_or_404(models.Webapp)})
+    return render(req, 'display/webapp.html', {'data': models.Webapp.objects.values()})
 
 
 def service(req):
-    return render(req, 'display/service.html', {'data': get_list_or_404(models.service)})
+    return render(req, 'display/service.html', {'data': models.service.objects.values()})
 
 
 def gateway(req):
-    return render(req, 'display/gateway.html', {'data': get_list_or_404(models.Gateway)})
+    return render(req, 'display/gateway.html', {'data': models.Gateway.objects.values()})
