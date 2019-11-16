@@ -17,6 +17,8 @@ class Customer(models.Model):
     accounting_contact = models.TextField(blank=True, default=None, null=True)
     technical_name = models.TextField(blank=True, default=None, null=True)
     technical_contact = models.TextField(blank=True, default=None, null=True)
+   
+    
 
 
 class Webapp (models.Model):
@@ -31,12 +33,11 @@ class Webapp (models.Model):
     max_users = models.IntegerField()
     organizationID = models.TextField()
     status = models.BooleanField(default=False)
-
+  
 
 class service(models.Model):
     customer_id = models.ForeignKey("Customer", on_delete=models.CASCADE)
-    system_name = models.OneToOneField(
-        "Webapp", on_delete=models.CASCADE, null=True, blank=True)
+    system_name = models.OneToOneField( "Webapp", on_delete=models.CASCADE)
     service_start_date = models.DateField()
     service_end_date = models.DateField()
     product_type = models.TextField(null=True, blank=True)
