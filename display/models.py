@@ -5,7 +5,7 @@ import datetime
 
 class Tag(models.Model):
     tag = models.TextField(primary_key=True)
-    description = models.TextField(null=True,blank=True, default=None)
+    description = models.TextField(null=True, blank=True, default=None)
 
 
 class Customer(models.Model):
@@ -39,8 +39,8 @@ class service(models.Model):
         "Webapp", on_delete=models.CASCADE, null=True, blank=True)
     service_start_date = models.DateField()
     service_end_date = models.DateField()
-    product_type = models.TextField()
-    service_type = models.TextField()
+    product_type = models.TextField(null=True, blank=True)
+    service_type = models.TextField(null=True, blank=True)
     @property
     def status(self):
         now = datetime.date.today()
